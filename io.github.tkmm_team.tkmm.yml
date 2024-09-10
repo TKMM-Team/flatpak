@@ -1,0 +1,59 @@
+app-id: io.github.tkmm_team.tkmm
+runtime: org.freedesktop.Platform
+runtime-version: "23.08"
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.dotnet8
+command: tkmm
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --socket=wayland
+  - --filesystem=host
+
+modules:
+  - name: git_clone
+    buildsystem: simple
+    build-commands:
+      - mkdir /app/tmp && cd /app/tmp &&
+        latest_tag=$(curl -s "https://api.github.com/repos/Tkmm-Team/Tkmm/releases/latest" | jq -r '.tag_name') &&
+        git clone --branch $latest_tag --recurse https://github.com/Tkmm-Team/Tkmm.git
+    build-options:
+      build-args:
+        - --share=network
+    sources:
+      - type: shell
+        commands: []
+
+  - name: Tkmm.Desktop
+    buildsystem: simple
+    build-commands:
+      - latest_tag=$(curl -s "https://api.github.com/repos/Tkmm-Team/Tkmm/releases/latest" | jq -r '.tag_name') &&
+        . /usr/lib/sdk/dotnet8/enable.sh &&  mkdir /app/NuGetPackages && export NUGET_PACKAGES=/app/NuGetPackages &&
+        dotnet publish /app/tmp/Tkmm/src/Tkmm.Desktop/Tkmm.Desktop.csproj -c Release -o /app/tkmm/ --self-contained true --version-suffix ${latest_tag:1} -p:Version=${latest_tag:1}
+      - mv /app/tkmm/Tkmm.Desktop /app/tkmm/tkmm && mkdir -p /app/bin && ln -s /app/tkmm/tkmm /app/bin/
+      - rm -rf /app/NuGetPackages
+      - rm -rf /app/tmp
+    build-options:
+      build-args:
+        - --share=network
+    sources:
+      - type: shell
+        commands: []
+
+  - name: Metadata-shortcuts-icons
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 ${FLATPAK_BUILDER_BUILDDIR}/io.github.tkmm_team.tkmm.metainfo.xml -t /app/share/metainfo/
+      - install -Dm644 ${FLATPAK_BUILDER_BUILDDIR}/io.github.tkmm_team.tkmm.desktop -t /app/share/applications/
+      - install -Dm644 ${FLATPAK_BUILDER_BUILDDIR}/io.github.tkmm_team.tkmm.svg -t /app/share/icons/hicolor/scalable/apps/
+    sources:
+      - type: file
+        path: io.github.tkmm_team.tkmm.metainfo.xml
+      - type: file
+        path: io.github.tkmm_team.tkmm.desktop
+      - type: file
+        path: io.github.tkmm_team.tkmm.svg
+      - type: shell
+        commands: []

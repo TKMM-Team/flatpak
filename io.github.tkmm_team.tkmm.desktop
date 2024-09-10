@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TKMM
+Exec=tkmm
+Icon=io.github.tkmm_team.tkmm
+Keywords=tkmm
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Utility;

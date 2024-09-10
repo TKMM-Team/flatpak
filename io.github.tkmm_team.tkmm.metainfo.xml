@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.tkmm_team.tkmm</id>
+  <name>TKMM</name>
+  <summary>Tears of the Kingdom Mod Manager</summary>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>
+      A mod manager and merger for Tears of the Kingdom.
+    </p>
+  </description>
+  <developer id="io.github.tkmm_team">
+    <name>TKMM-Team</name>
+  </developer>
+  <launchable type="desktop-id">io.github.tkmm_team.tkmm.desktop</launchable>
+  <url type="bugtracker">https://github.com/TKMM-Team/Tkmm/issues/</url>
+  <url type="homepage">https://totkmods.github.io/tkmm/</url>
+  <url type="faq">https://totkmods.github.io/tkmm/faq/</url>
+  <url type="contribute">https://github.com/TKMM-Team/Tkmm</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/TKMM-Team/.github/main/resources/banner.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/TKMM-Team/.github/main/resources/app-screenshot.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/TKMM-Team/.github/main/resources/app-screenshot-secondary.png</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="v1.0.0-beta11" date="2024-08-31"/>
+    <release version="v1.0.0-beta10" date="2024-08-24"/>
+  </releases>
+</component>
