@@ -14,10 +14,10 @@
     <name>TKMM-Team</name>
   </developer>
   <launchable type="desktop-id">io.github.tkmm_team.tkmm.desktop</launchable>
-  <url type="bugtracker">https://github.com/TKMM-Team/Tkmm/issues/</url>
-  <url type="homepage">https://totkmods.github.io/tkmm/</url>
-  <url type="faq">https://totkmods.github.io/tkmm/faq/</url>
+  <url type="homepage">https://tkmm.org/</url>
+  <url type="faq">https:/tkmm.org/faq/</url>
   <url type="contribute">https://github.com/TKMM-Team/Tkmm</url>
+  <url type="bugtracker">https://github.com/TKMM-Team/Tkmm/issues/</url>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/TKMM-Team/.github/main/resources/banner.png</image>
